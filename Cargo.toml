@@ -1,0 +1,22 @@
+[package]
+name = "pulumi-bootstrap"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+colored = "2"
+anyhow = "1.0.95"
+clap = { version = "4.5.27", features = ["derive"] }
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.8"
+inquire = { version = "0.7.5", features = ["date"] }
+tempfile = "3.15.0"
+yansi = "1.0.1"
+crossterm = "0.28.1"
+ratatui = "0.29.0"
+serde_json = "1.0.137"
+strum = "0.26.3"
+# strum_macros = { version = "0.24.3", features = ["into_enum_iterator"] }

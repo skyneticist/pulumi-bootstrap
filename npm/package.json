@@ -1,0 +1,17 @@
+{
+    "type": "module",
+    "name": "pulumime",
+    "version": "1.0.0",
+    "description": "A CLI tool to help Vizient engineers create their infrastructure projects.",
+    "main": "index.js",
+    "bin": {
+        "pulumime": "./bin/pulumi-bootstrap.exe"
+    },
+    "scripts": {
+        "preinstall": "cargo build --release",
+        "postinstall": "node ./scripts/move-binary.js"
+    },
+    "publishConfig": {
+        "registry": "https://pkgs.dev.azure.com/{organization}/{project}/_packaging/{feedName}/npm/registry/"
+    }
+}
