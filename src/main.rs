@@ -18,10 +18,10 @@ mod tui {
     pub mod app;
     mod constants;
     mod enums;
+    pub mod snippet_select;
     pub mod tui_main;
     mod ui;
     pub mod validation;
-    pub mod snippet_select;
 }
 
 #[tokio::main]
