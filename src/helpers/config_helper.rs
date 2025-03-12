@@ -9,7 +9,7 @@ use crate::tui::app::ProjectConfig;
 
 /// Represents the structure of the configuration, including settings and environment metadata.
 #[derive(serde::Serialize)]
-struct Config {
+struct AzureConfigYaml {
     config: BTreeMap<String, String>, // Key-value settings for Azure configurations.
     environment: Vec<String>,         // Metadata related to the environment (e.g., 'meta').
 }
@@ -32,7 +32,7 @@ pub struct AzureSubscription {
 ///
 /// # Returns
 /// - A `Config` struct representing the generated configuration with ordered keys.
-fn generate_config(infra_config: &ProjectConfig, azure_subscription: &AzureSubscription) -> Config {
+fn generate_config(infra_config: &ProjectConfig, azure_subscription: &AzureSubscription) -> AzureConfigYaml {
     let mut config: BTreeMap<String, String> = BTreeMap::new();
 
     // Static Azure location
@@ -66,7 +66,7 @@ fn generate_config(infra_config: &ProjectConfig, azure_subscription: &AzureSubsc
     let environment: Vec<String> = vec!["meta".to_string()];
 
     // Return populated Config struct instance
-    Config {
+    AzureConfigYaml {
         config,
         environment,
     }
@@ -80,7 +80,7 @@ fn generate_config(infra_config: &ProjectConfig, azure_subscription: &AzureSubsc
 ///
 /// # Returns
 /// - `Result<(), Box<dyn std::error::Error>>`: Indicates success or failure.
-fn write_config_to_file(config: &Config, output_path: &str) -> Result<(), Error> {
+fn write_config_to_file(config: &AzureConfigYaml, output_path: &str) -> Result<(), Error> {
     // Serialize the configuration into a YAML string
     let yaml_string = serde_yaml::to_string(config)?;
 
@@ -101,7 +101,8 @@ fn write_config_to_file(config: &Config, output_path: &str) -> Result<(), Error>
 }
 
 pub fn get_subscription_info(environment: &str) -> AzureSubscription {
-    // TODO: These values should come from .env
+    // TODO: These values should come from environment variables/.env file
+    // For now, hardcoded for demonstration purposes
     match environment {
         "dev" => AzureSubscription {
             env: "dev".to_owned(),
@@ -225,7 +226,7 @@ mod tests {
 
     #[test]
     fn test_write_config_to_file() {
-        let config = Config {
+        let config = AzureConfigYaml {
             config: BTreeMap::from([
                 ("key1".to_string(), "value1".to_string()),
                 ("key2".to_string(), "value2".to_string()),

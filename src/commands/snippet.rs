@@ -14,7 +14,7 @@ pub async fn new(
     // Create directory
     match output_path {
         Some(path) => fs::create_dir_all(path)?,
-        _ => fs::create_dir_all("snippets")?,
+        _ => fs::create_dir_all("_snippet")?,
     }
 
     let snippet = generate_resource_snippet(resource.unwrap(), name)?;

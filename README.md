@@ -1,42 +1,43 @@
-# Pulumi-Bootstrap Application (pulumime)  
+# Pulumi-Bootstrap Application (pulumimi)  
 
 ## Overview  
 
-**Pulumi-Bootstrap (pulumime)** is a Rust-based CLI tool distributed via `npm` to simplify the process of bootstrapping infrastructure for new applications at Vizient. By standardizing and automating setup tasks, it aims to reduce errors, save time, and provide a consistent starting point for infrastructure-as-code (IaC) projects.
+**Pulumi-Bootstrap (pulumimi)** is a Rust-based CLI tool distributed via `npm` to simplify the process of bootstrapping infrastructure for new applications at Vizient. By standardizing and automating setup tasks, it aims to reduce errors, save time, and provide a consistent starting point for infrastructure-as-code (IaC) projects.
 
-This tool is specifically designed to address common pain points encountered by full-stack engineers, including:  
-- Setting up secure and effective network configurations.  
+This tool is specifically designed to address common pain points encountered by full-stack engineers, including:
+
+- Setting up secure and effective network configurations.
+
 - Ensuring proper communication and access between resources.  
-- Adhering to best practices for hosting and access management.  
+
+- Adhering to best practices for hosting and access management.
+
 - Supporting member-facing and internal applications.  
 
-Pulumi-Bootstrap is intended to ease these challenges by providing a standardized, flexible, and opinionated approach to infrastructure setup.  
+Pulumi-Bootstrap is intended to ease these challenges by providing a standardized, flexible, and opinionated approach to infrastructure setup. (? - Review this)
+
+## Note
+
+### Integration with Vizient Pulumi Snippets
+
+**Vizient Pulumi Snippets** is a Vizient repository... (need to fill out).
+
+Pulumi-Bootstrap leverages the **Vizient Pulumi Snippets** repository as a git submodule to provide reusable infrastructure components. This integration ensures that common configurations and best practices are easily accessible and maintainable.
+### Available via `npm`
+
+Pulumi-Bootstrap is a Rust-based CLI and TUI application. This project uses **NPM** for distribution, since most Vizient engineers have Node and NPM installed on their machines. It can also be downloaded directly from the Vizient repository: <ADD_REPO_HERE>. Alternatively, you can use Rust and Cargo. To do so, clone the `Pulumi-Bootstrap` repository and follow the standard procedure for running Rust programs.
+
+###
 
 ---
 
-## Repository Structure  (incomplete)
-
-```bash
-project-root/
-├── src/                  # Rust source code for the application.
-├── rust-binaries/        # Location where Rust binaries are built.
-├── npm/
-│   ├── bin/              # Contains the final binary (e.g., pulumi-bootstrap).
-│   ├── package.json      # NPM package descriptor for distribution.
-│   ├── scripts/          # Scripts for lifecycle events (preinstall, postinstall, etc.).
-│   ├── move-binary.js    # Script to move the binary to the npm bin directory.
-│   └── other-npm-configs/ # Additional NPM-related configuration files.
-└── Cargo.toml            # Rust project descriptor file.
-```
-
-## Project Name
-
-**Pulumi Bootstrapping**
+## Repository Structure
 
 ## Repos
 
-- pulumi-bootsrapper
-- snippets (sym-linked to snippets resource in other repo)
+- pulumi-bootsrap
+- Vizient Pulumi Snippets
+    (used as git submodule in pulumi-bootstrap)
 
 ```bash
 pulumi-bootstrap/
@@ -61,15 +62,6 @@ pulumi-bootstrap/
 │   │   ├── entrypoint_helper.rs
 │   │   └── pipeline_helper.rs
 │   │
-│   ├── snippets/                         # This is a separate repo - git submodule 
-│   │   ├── azure-pipelines.yaml
-│   │   ├── cache.ts
-│   │   ├── container-registry.ts
-│   │   ├── database.ts
-│   │   ├── keyvault.ts
-│   │   ├── pulumi.webstackvzn.ts
-│   │   ├── service-bus.ts
-│   │   └── storage.ts
 │   │
 │   ├── cli.rs
 │   └── main.rs
@@ -79,6 +71,8 @@ pulumi-bootstrap/
 │   ├── package.json
 │   ├── package-lock.json
 │   └── .npmrc
+│
+├── snippets/ (independent repo used as git submodule)
 │
 ├── azure-pipelines.yaml
 ├── npm_local.sh
@@ -134,12 +128,15 @@ Object-oriented Pulumi projects, while more complex, allow for scalable and main
 
 ---
 
+[
+   !!! MUST BE UPDATED !!!
+]
 ## Installation  
 
 To install the CLI via `npm`:  
 
 ```bash
-npm install -g pulumime
+npm install -g pulumimi
 ```
 
 After installation, the `pulumi-bootstrap` binary will be available globally.  
@@ -150,12 +147,12 @@ After installation, the `pulumi-bootstrap` binary will be available globally.
 
 Run the tool with:  
 ```bash
-pulumime [options]
+pulumimi [options]
 ```  
 
 For detailed help and examples:  
 ```bash
-pulumime --help
+pulumimi --help
 ```
 
 ---
@@ -195,7 +192,8 @@ Pulumi-Bootstrap is an evolving project. Future iterations may include:
 
 ### Notes for Improvement  
 
-- Ensure `move-binary.js` handles all edge cases for copying binaries across platforms.  
+- Ensure `move-binary.js` handles all edge cases for copying binaries across platforms.
+
 - Validate the effectiveness of both declarative and object-oriented paradigms in practical use cases.  
 
 ---
