@@ -75,9 +75,7 @@ pulumi-bootstrap/
 ├── snippets/ (independent repo used as git submodule)
 │
 ├── azure-pipelines.yaml
-├── npm_local.sh
 ├── cargo.toml
-├── cargo.lock
 ├── .env
 ├── .gitignore
 └── README.md

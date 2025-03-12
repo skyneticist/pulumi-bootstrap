@@ -15,14 +15,6 @@ const PIPELINE_TEMPLATE: &str = include_str!("../../snippets/azure-pipelines.yam
 /// # Returns
 /// - `Result<(), anyhow::Error>`: Returns a result indicating success or failure.
 ///
-/// # Example
-/// ```
-/// let result = create_pipeline_yaml("myapp", None).await;
-/// match result {
-///     Ok(_) => println!("Pipeline YAML created."),
-///     Err(e) => eprintln!("Error: {}", e),
-/// }
-/// ```
 pub async fn create_pipeline_yaml(
     config: &ProjectConfig,
     output_dir: Option<&str>,
@@ -53,10 +45,6 @@ pub async fn create_pipeline_yaml(
     fs::write(&pipeline_path, &modified_pipeline)
         .map_err(|err| anyhow::anyhow!("Failed to write to {}: {}", pipeline_path, err))?;
 
-    // Output confirmation message with the path where the file was created
-    println!("Pipeline YAML created successfully at '{}'.", pipeline_path);
-
-    // Return a successful result
     Ok(())
 }
 
